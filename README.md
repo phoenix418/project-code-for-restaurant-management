@@ -1,1 +1,1 @@
-# project-code-for-restaurant-management
+# проектный код для управления рестораном
