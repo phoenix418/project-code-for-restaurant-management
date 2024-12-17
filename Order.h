@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 #include <thread>
-#include "draw.cpp"
 #include "MenuItem.h"
 using namespace std;
 
@@ -28,7 +27,7 @@ public:
     void displayOrder();
 
 
-    int getItemCount();
+    size_t getItemCount();
 
 
     MenuItem getItem(int index);
