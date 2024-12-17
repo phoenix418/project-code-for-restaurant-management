@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 #include <thread>
-#include "draw.cpp"
 using namespace std;
 
 
