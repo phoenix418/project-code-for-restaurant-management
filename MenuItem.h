@@ -17,6 +17,7 @@ private:
 public:
     MenuItem(string n, double p, string ing);
 
+    static int drawMenu();
 
     void displayInfo();
 
