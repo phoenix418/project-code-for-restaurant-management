@@ -3,12 +3,696 @@
 #include <string>
 #include <fstream>
 #include <thread>
+#include <functional>
+#include <sstream>
 #include "MenuItem.h"
 #include "Order.h"
 #include "Customer.h"
 #include "Restaurant.h"
-
+#include "Admin.h"
+#include "AdminManager.h"
 using namespace std;
+
+int MenuItem::drawMenu() {
+    //🟥🟧🟨🟩🟦🟪🟫⬜️⬛️
+    for (int i = 0; i < 4; i++) {
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                      \\u25A0               " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        chrono::milliseconds search1(70);
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                       \\u25A0              " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                        \\u25A0             " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                         \\u25A0            " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                          \\u25A0           " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                           \\u25A0          " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                            \\u25A0         " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                             \\u25A0        " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                             \\u25A0        " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                              \\u25A0       " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                               \\u25A0      " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                \\u25A0     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                 \\u25A0    " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                  \\u25A0   " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                   \\u25A0  " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                    \\u25A0 " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                     \\u25A0" << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                     \\u25A0" << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                    \\u25A0 " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                   \\u25A0  " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                  \\u25A0   " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                 \\u25A0    " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                                \\u25A0     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                               \\u25A0      " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                             \\u25A0        " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                            \\u25A0        " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                           \\u25A0         " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                          \\u25A0          " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                         \\u25A0            " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                        \\u25A0             " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                       \\u25A0              " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                      \\u25A0               " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        this_thread::sleep_for(search1);
+        cout << "\x1B[2J\x1B[H";
+    }
+    for (int i = 0; i < 1; i++) {
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0             " << endl;
+        chrono::milliseconds search2(1000);
+        this_thread::sleep_for(search2);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\x1B[2J\x1B[H";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                     " << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        this_thread::sleep_for(search2);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                    " << endl;
+        cout << "                    " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        this_thread::sleep_for(search2);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0              " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0                   " << endl;
+        this_thread::sleep_for(search2);
+        cout << "\x1B[2J\x1B[H";
+    }
+    for (int i = 0; i < 3; i++) {
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "      " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "      " << endl;
+        chrono::milliseconds serch(100);
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "\n";
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                     |   запуск    |" << endl;
+        cout << "                     |   системы   |" << endl;
+        cout << "                     |=============|" << endl;
+        cout << "                      \\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0\\u25A0  " << endl;
+        this_thread::sleep_for(serch);
+        cout << "\x1B[2J\x1B[H";
+    }
+    return 0;
+}
 
 
 MenuItem::MenuItem(string n, double p, string ing) : name(n), price(p), ingredients(ing) {}
@@ -165,7 +849,6 @@ void Restaurant::handleOrderModification(Order& order) {
 }
 
 
-
 void Restaurant::displayMenu() {
     cout << "Меню:" << endl;
     for (size_t i = 0; i < menu.size(); i++) { 
@@ -173,3 +856,100 @@ void Restaurant::displayMenu() {
         menu[i].displayInfo();
     }
 }
+
+
+Admin::Admin(string user, string passHash) : username(user), passwordHash(passHash) {}
+
+string Admin::getUsername() const {
+    return username;
+    }
+
+string Admin::getPasswordHash() const {
+   return passwordHash;
+}
+
+
+string AdminManager::hashPassword(string& password) {
+    string hash;
+    for (char c : password) {
+        hash += c ^ 0xAA;
+    }
+    return hash;
+}
+
+void AdminManager::loadAdmins() {
+    ifstream file(adminFile);
+    string username, passwordHash;
+    while (file >> username >> passwordHash) {
+        admins.emplace_back(username, passwordHash);
+    }
+    file.close();
+    }
+
+
+void AdminManager::saveAdmin(Admin& admin) {
+    ofstream file(adminFile, ios::app);
+    file << admin.getUsername() << " " << admin.getPasswordHash() << endl;
+    file.close();
+    }
+
+
+AdminManager::AdminManager(string adminFile) : adminFile(adminFile) {
+    loadAdmins();
+}
+
+
+void AdminManager::registerAdmin() {
+    string username, password;
+    cout << "Введите имя пользователя: ";
+    cin >> username;
+    cout << "Введите пароль: ";
+    cin >> password;
+    for (const auto& admin : admins) {
+        if (admin.getUsername() == username) {
+            cout << "Имя пользователя уже занято. Попробуйте другое." << endl;
+            return;
+        }
+    }
+    string passwordHash = hashPassword(password);
+    Admin newAdmin(username, passwordHash);
+    admins.push_back(newAdmin);
+    saveAdmin(newAdmin);
+    cout << "Администратор зарегистрирован!" << endl;
+}
+
+
+bool AdminManager::loginAdmin() {
+    string username, password;
+    cout << "Введите имя пользователя: ";
+    cin >> username;
+    cout << "Введите пароль: ";
+    cin >> password;
+    string passwordHash = hashPassword(password);
+
+    for (const auto& admin : admins) {
+        if (admin.getUsername() == username && admin.getPasswordHash() == passwordHash) {
+            cout << "Вход выполнен успешно!" << endl;
+            return true;
+        }
+    }
+    cout << "Неверное имя пользователя или пароль." << endl;
+    return false;
+}
+
+void AdminManager::logoutAdmin() {
+    cout << "Вы вышли из системы." << endl;
+    }
+
+
+
+
+
+
+
+    
+
+
+
+
+
