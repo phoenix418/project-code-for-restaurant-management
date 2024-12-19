@@ -32,6 +32,18 @@ public:
 
     MenuItem getItem(int index);
 
+    double getTotalPrice() const;
 
+
+    int getOrderID() const;
 };
 #endif
+
+    
+    
+    
+    
+   
+   
+   
+    
