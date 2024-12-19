@@ -12,9 +12,11 @@
 using namespace std;
 
 
+
+
 int main() {
     setlocale(LC_ALL, "rus");
-    MenuItem::drawMenu();
+
     const string adminFile = "adminFile.txt";
     AdminManager adminManager(adminFile);
     int choice;
@@ -22,6 +24,7 @@ int main() {
         cout << "1. Регистрация администратора" << endl;
         cout << "2. Вход администратора" << endl;
         cout << "3. Выход" << endl;
+        cout << "4. написать заказ:" << endl;
         cout << "Выберите действие: ";
         cin >> choice;
         switch (choice) {
@@ -35,17 +38,11 @@ int main() {
         case 3:
             adminManager.logoutAdmin();
             break;
+        case 4:
+            adminManager.writeOrder();
+            break;
         default:
             cout << "Неверный выбор, попробуйте снова." << endl;
         }
     } while (choice != 3);
-    Restaurant restaurant;
-    restaurant.loadMenu("menu.txt");
-    string customerName;
-    cout << "Введите имя клиента: ";
-    getline(cin, customerName);
-    cout << "\x1B[2J\x1B[H";
-    Customer customer(customerName);
-    restaurant.createOrder(customer);
-    return 0;
 }
