@@ -13,6 +13,8 @@
 #include "AdminManager.h"
 using namespace std;
 
+
+
 int MenuItem::drawMenu() {
     //🟥🟧🟨🟩🟦🟪🟫⬜️⬛️
     for (int i = 0; i < 4; i++) {
@@ -792,23 +794,60 @@ void Restaurant::addMenuItem(MenuItem item) {
 }
 
 
+double Order::getTotalPrice() const {
+    return totalPrice;
+}
+
+
+int Order::getOrderID() const {
+    return orderID;
+}
+
+
+void Restaurant::saveOrderToFile(Order& order) {
+    string filename = "order_" + to_string(order.getOrderID()) + ".txt";
+    ofstream outFile(filename); 
+    if (outFile.is_open()) {
+        outFile << "Заказ ID: " << order.getOrderID() << endl;
+        outFile << "Содержимое заказа:" << endl;
+        for (size_t i = 0; i < order.getItemCount(); i++) {
+            outFile << order.getItem(i).getName() << " - " << order.getItem(i).getPrice() << endl;
+        }
+        outFile << "Общая стоимость: " << order.getTotalPrice() << endl;
+        outFile.close();
+        cout << "Данные заказа сохранены в файл: " << filename << endl;
+    }
+    else {
+        cout << "Не удалось открыть файл для записи заказа." << endl;
+    }
+}
+
+
+
 void Restaurant::createOrder(Customer customer) {
     Order order(++orderCount);
-    size_t itemIndex; 
-    displayMenu();
-    cout << "Выберите номер блюда для заказа (или -1 для завершения): ";
-    cin >> itemIndex;
+    size_t itemIndex;
 
-    if (itemIndex < menu.size()) { 
-        order.addItem(menu[itemIndex]);
-        cout << "\x1B[2J\x1B[H";
+    while (true) {
+        displayMenu();
+        cout << "Выберите номер блюда для заказа (или -1 для завершения): ";
+        cin >> itemIndex;
+        if (itemIndex < menu.size()) {
+            order.addItem(menu[itemIndex]);
+            cout << "\x1B[2J\x1B[H"; 
+        }
+        else if (itemIndex == (size_t)-1) {
+            break;
+        }
+        else {
+            cout << "Неверный номер блюда. Попробуйте снова." << endl;
+            cout << "\x1B[2J\x1B[H"; 
+        }
     }
-    else if (itemIndex != (size_t)-1) { 
-        cout << "Неверный номер блюда. Попробуйте снова." << endl;
-        cout << "\x1B[2J\x1B[H";
-    }
+
     order.displayOrder();
     handleOrderModification(order);
+    saveOrderToFile(order); 
     orders.push_back(order);
 }
 
@@ -901,22 +940,63 @@ AdminManager::AdminManager(string adminFile) : adminFile(adminFile) {
 
 void AdminManager::registerAdmin() {
     string username, password;
-    cout << "Введите имя пользователя: ";
-    cin >> username;
-    cout << "Введите пароль: ";
-    cin >> password;
-    for (const auto& admin : admins) {
-        if (admin.getUsername() == username) {
-            cout << "Имя пользователя уже занято. Попробуйте другое." << endl;
-            return;
+    string passwordAdmin = "vadim_yt2009";
+    cout << "Введите пароль Админестратора : ";
+    string coutpassword;
+    cin >> coutpassword;
+    if (coutpassword == passwordAdmin) {
+        cout << "Введите имя пользователя: ";
+        cin >> username;
+        cout << "Введите пароль: ";
+        cin >> password;
+        for (const auto& admin : admins) {
+            if (admin.getUsername() == username) {
+                cout << "Имя пользователя уже занято. Попробуйте другое." << endl;
+                return;
+            }
         }
+        string passwordHash = hashPassword(password);
+        Admin newAdmin(username, passwordHash);
+        admins.push_back(newAdmin);
+        saveAdmin(newAdmin);
+        cout << "Администратор зарегистрирован!" << endl;
     }
-    string passwordHash = hashPassword(password);
-    Admin newAdmin(username, passwordHash);
-    admins.push_back(newAdmin);
-    saveAdmin(newAdmin);
-    cout << "Администратор зарегистрирован!" << endl;
+    else {
+        cout << "не верный пароль";
+
+    }
+    
 }
+
+
+int AdminManager::writeOrder() {
+    cout << "Вы вошли в аккаунт!" << endl;
+    cout << "1. Написать заказ:" << endl;
+    cout << "2. Вернуться в меню" << endl;
+
+    int choice;
+    cin >> choice;
+    if (choice == 1) {
+        Restaurant restaurant;
+        restaurant.loadMenu("menu.txt");
+        string customerName;
+        cout << "Введите имя клиента: ";
+        getline(cin, customerName);
+        cout << "\x1B[2J\x1B[H";
+        Customer customer(customerName);
+        restaurant.createOrder(customer);
+        return 1; 
+    }
+    else if (choice == 2) {
+        return AdminManager::loginAdmin(); 
+    }
+    else {
+        cout << "Неверный выбор, попробуйте снова." << endl;
+        return writeOrder(); 
+    }
+}
+
+
 
 
 bool AdminManager::loginAdmin() {
@@ -926,30 +1006,20 @@ bool AdminManager::loginAdmin() {
     cout << "Введите пароль: ";
     cin >> password;
     string passwordHash = hashPassword(password);
-
     for (const auto& admin : admins) {
         if (admin.getUsername() == username && admin.getPasswordHash() == passwordHash) {
             cout << "Вход выполнен успешно!" << endl;
+            AdminManager::writeOrder();
             return true;
         }
     }
+
     cout << "Неверное имя пользователя или пароль." << endl;
     return false;
 }
 
+
 void AdminManager::logoutAdmin() {
     cout << "Вы вышли из системы." << endl;
+
     }
-
-
-
-
-
-
-
-    
-
-
-
-
-
