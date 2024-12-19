@@ -1,3 +1,6 @@
+#ifndef ADMINMANAGER_H
+#define ADMINMANAGER_H
+#include <iostream>
 #include <vector>
 #include <string>
 #include <fstream>
@@ -25,5 +28,7 @@ public:
     bool loginAdmin();
 
     void logoutAdmin();
+
+    int writeOrder();
 };
 #endif
