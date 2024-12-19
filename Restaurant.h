@@ -1,3 +1,4 @@
+
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
 #include <iostream>
@@ -23,6 +24,9 @@ public:
 
 
 	void addMenuItem(MenuItem item);
+
+
+	void saveOrderToFile(Order& order);
 
 
 	void createOrder(Customer customer);
